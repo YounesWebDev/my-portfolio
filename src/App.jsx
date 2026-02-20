@@ -1,34 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { StarsBackground } from './components/animate-ui/components/backgrounds/stars'
+import Intro from './Intro'
+import Hero from './Hero'
+import NavBar from './NavBar'
+import About from './About'
+import Skills from './Skills'
+import Projects from './Projects'
+import Contact from './Contact'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showIntro, setShowIntro] = useState(true)
+  const [isIntroClosing, setIsIntroClosing] = useState(false)
+
+  useEffect(() => {
+    if (!isIntroClosing) {
+      return
+    }
+
+    const timer = setTimeout(() => {
+      setShowIntro(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [isIntroClosing])
+
+  const handleIntroClick = () => {
+    if (isIntroClosing) {
+      return
+    }
+
+    setIsIntroClosing(true)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="relative min-h-screen overflow-x-hidden bg-[#020409] text-slate-100">
+      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+        <StarsBackground factor={0} speed={65} starColor="#f8fbff" pointerEvents={false} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      {showIntro ? (
+        <div className="transition-all duration-400 ease-in-out relative z-20">
+          <Intro onIntroClick={handleIntroClick} isClosing={isIntroClosing} />
+        </div>
+      ) : (
+        <>
+          <NavBar />
+
+          <main className="scroll-smooth relative z-20">
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Contact />
+          </main>
+
+          <div className="h-10 md:h-0" />
+        </>
+      )}
+    </div>
   )
 }
 
