@@ -44,7 +44,6 @@ function App() {
       ) : (
         <>
           <NavBar />
-
           <main className="scroll-smooth relative z-20">
             <Hero />
             <About />
@@ -52,7 +51,6 @@ function App() {
             <Projects />
             <Contact />
           </main>
-
           <div className="h-10 md:h-0" />
         </>
       )}
