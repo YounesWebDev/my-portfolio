@@ -20,6 +20,7 @@ function App() {
     const timer = setTimeout(() => {
       setShowIntro(false)
     }, 3000)
+
     return () => clearTimeout(timer)
   }, [isIntroClosing])
 
@@ -38,19 +39,21 @@ function App() {
       </div>
 
       {showIntro ? (
-        <div className="transition-all duration-400 ease-in-out relative z-20">
+        <div className="relative z-20 transition-all duration-400 ease-in-out">
           <Intro onIntroClick={handleIntroClick} isClosing={isIntroClosing} />
         </div>
       ) : (
         <>
           <NavBar />
-          <main className="scroll-smooth relative z-20">
+
+          <main className="relative z-20 scroll-smooth">
             <Hero />
             <About />
             <Skills />
             <Projects />
             <Contact />
           </main>
+
           <div className="h-10 md:h-0" />
         </>
       )}

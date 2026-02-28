@@ -27,6 +27,7 @@ export default function About() {
         About Me
       </ScrollFloat>
 
+    <div className="max-w-screen border-2 rounded-4xl border-cyan-700 p-6 text-sm">
       <ScrollReveal
         baseOpacity={1}
         enableBlur
@@ -34,13 +35,14 @@ export default function About() {
         blurStrength={9}
         highlightWords={ABOUT_HIGHLIGHT_WORDS}
         highlightClassName="text-cyan-300"
-      >
+        >
         Hi, I'm Younes, a Fullstack Developer (Backend and Frontend) who builds reliable web
         applications end-to-end, scalable backends, clean responsive frontends, and smooth user
         experiences. I work with APIs, databases, and modern UI to ship features that are fast,
         maintainable, and performance-focused, with a strong emphasis on clean code and good
         architecture.
       </ScrollReveal>
+    </div>
     </section>
   )
 }
