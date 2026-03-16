@@ -54,7 +54,11 @@ function App() {
             <Contact />
           </main>
 
-          <div className="h-10 md:h-0" />
+          <footer className="relative z-20 border-t border-white/10 px-3 py-6 sm:px-6">
+            <div className="mx-auto max-w-6xl text-center text-xs text-slate-300 sm:text-sm">
+              © {new Date().getFullYear()} Younes. All rights reserved.
+            </div>
+          </footer>
         </>
       )}
     </div>

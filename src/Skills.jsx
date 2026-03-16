@@ -109,6 +109,7 @@ export default function Skills() {
         scrollStart="center bottom+=50%"
         scrollEnd="bottom bottom-=40%"
         stagger={0.06}
+        textClassName="text-3xl font-bold text-white sm:text-4xl"
       >
         Tech Stack
       </ScrollFloat>
